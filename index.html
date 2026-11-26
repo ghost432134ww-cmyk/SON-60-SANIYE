@@ -4,31 +4,32 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <meta name="theme-color" content="#070707">
 <meta name="description" content="SON 60 SANİYE v1.2 — HNFAK Games. 60 saniye hayatta kalabilecek misin?">
+
 <title>SON 60 SANİYE v1.2 — HNFAK Games</title>
 
 <style>
 *{
   box-sizing:border-box;
   margin:0;
-  padding:0
+  padding:0;
 }
 
 :root{
-  --bg:#050505;
+  --bg:#060606;
   --panel:#101010;
-  --panel2:#151515;
   --text:#f5f5f5;
   --muted:#999;
   --accent:#ff3b20;
   --accent2:#ff7a18;
   --green:#35d07f;
-  --line:#252525;
+  --line:#242424;
 }
 
 html{
-  scroll-behavior:smooth
+  scroll-behavior:smooth;
 }
 
 body{
@@ -44,9 +45,17 @@ body:before{
   inset:0;
   pointer-events:none;
   background:
-    radial-gradient(circle at 50% 10%,rgba(255,55,20,.16),transparent 32%),
-    radial-gradient(circle at 10% 80%,rgba(255,40,10,.06),transparent 25%),
-    linear-gradient(120deg,transparent 40%,rgba(255,255,255,.018) 50%,transparent 60%);
+    radial-gradient(
+      circle at 50% 10%,
+      rgba(255,55,20,.15),
+      transparent 32%
+    ),
+    linear-gradient(
+      120deg,
+      transparent 40%,
+      rgba(255,255,255,.018) 50%,
+      transparent 60%
+    );
   z-index:-1;
 }
 
@@ -97,6 +106,8 @@ nav{
 
 .badge{
   display:inline-flex;
+  align-items:center;
+  gap:7px;
   padding:8px 13px;
   border:1px solid #3a3a3a;
   border-radius:999px;
@@ -106,9 +117,9 @@ nav{
   margin-bottom:25px;
 }
 
-.badge .live{
+.live{
   color:var(--green);
-  margin-right:6px;
+  text-shadow:0 0 10px var(--green);
 }
 
 h1{
@@ -129,6 +140,7 @@ h1 span{
   color:#bdbdbd;
   margin:25px auto 34px;
   max-width:700px;
+  line-height:1.35;
 }
 
 .cta{
@@ -181,13 +193,13 @@ h1 span{
 .download-counter{
   display:inline-flex;
   align-items:center;
-  gap:8px;
-  margin-top:22px;
+  gap:9px;
+  margin-top:20px;
   padding:10px 16px;
   border:1px solid #292929;
-  background:#0d0d0d;
   border-radius:999px;
-  color:#aaa;
+  background:#0d0d0d;
+  color:#999;
   font-size:13px;
 }
 
@@ -286,8 +298,13 @@ section{
 
 .download{
   background:
-    radial-gradient(circle at 50% 0%,rgba(255,59,32,.10),transparent 45%),
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(255,59,32,.10),
+      transparent 45%
+    ),
     linear-gradient(145deg,#15100e,#0b0b0b);
+
   border:1px solid #392019;
   border-radius:25px;
   padding:45px;
@@ -307,6 +324,35 @@ section{
 
 .download-main-btn{
   min-width:260px;
+}
+
+.big-counter{
+  margin:30px auto 0;
+  max-width:500px;
+  padding:22px;
+  border:1px solid #292929;
+  background:#090909;
+  border-radius:18px;
+}
+
+.big-counter-label{
+  color:#777;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  font-size:11px;
+  margin-bottom:6px;
+}
+
+.big-counter-number{
+  font-size:42px;
+  font-weight:950;
+  color:white;
+}
+
+.counter-status{
+  margin-top:7px;
+  color:#666;
+  font-size:11px;
 }
 
 .specs{
@@ -333,55 +379,10 @@ section{
   color:#777;
 }
 
-.big-counter{
-  margin:30px auto 0;
-  max-width:500px;
-  padding:22px;
-  border:1px solid #292929;
-  background:#090909;
-  border-radius:18px;
-}
-
-.big-counter-label{
-  color:#777;
-  text-transform:uppercase;
-  letter-spacing:2px;
-  font-size:11px;
-  margin-bottom:6px;
-}
-
-.big-counter-number{
-  font-size:42px;
-  font-weight:950;
-  color:white;
-}
-
 .notice{
   font-size:12px;
   color:#777;
   margin-top:18px;
-}
-
-.toast{
-  position:fixed;
-  left:50%;
-  bottom:25px;
-  transform:translate(-50%,20px);
-  background:#151515;
-  border:1px solid #333;
-  color:white;
-  padding:14px 20px;
-  border-radius:12px;
-  opacity:0;
-  pointer-events:none;
-  transition:.3s;
-  z-index:999;
-  box-shadow:0 15px 40px rgba(0,0,0,.4);
-}
-
-.toast.show{
-  opacity:1;
-  transform:translate(-50%,0);
 }
 
 footer{
@@ -396,61 +397,75 @@ footer b{
   color:#aaa;
 }
 
+.error{
+  color:#ff5a45;
+}
+
 @media(max-width:800px){
+
   .navlinks{
-    display:none
+    display:none;
   }
 
   .grid{
-    grid-template-columns:1fr
+    grid-template-columns:1fr;
   }
 
   .specs{
-    grid-template-columns:1fr 1fr
+    grid-template-columns:1fr 1fr;
   }
 
   h1{
-    letter-spacing:-3px
+    letter-spacing:-3px;
   }
 
   .download{
-    padding:30px 20px
+    padding:30px 20px;
   }
 }
 
 @media(max-width:430px){
+
   .specs{
-    grid-template-columns:1fr
+    grid-template-columns:1fr;
   }
 
   .hero{
-    padding-top:45px
+    padding-top:45px;
   }
 
   .btn{
-    width:100%
+    width:100%;
   }
 
   .big-counter-number{
-    font-size:34px
+    font-size:35px;
   }
 }
 </style>
 </head>
 
+
 <body>
 
 <nav>
-  <a class="logo" href="#">HNFAK<span> GAMES</span></a>
+
+  <a class="logo" href="#">
+    HNFAK<span> GAMES</span>
+  </a>
 
   <div class="navlinks">
     <a href="#game">Oyun</a>
     <a href="#features">Özellikler</a>
     <a href="#download">İndir</a>
   </div>
+
 </nav>
 
+
 <main>
+
+<!-- HERO -->
 
 <section class="hero" id="game">
 
@@ -461,10 +476,12 @@ footer b{
       ANDROID • v1.2.0 • FREE
     </div>
 
+
     <h1>
       SON <span>60</span><br>
       SANİYE
     </h1>
+
 
     <p class="tagline">
       60 saniyen var.
@@ -472,29 +489,49 @@ footer b{
       <b>Hayatta kal.</b>
     </p>
 
+
     <div class="cta">
 
       <a
-        class="btn primary download-btn"
-        href="SON-60-SANIYE.apk"
-        download>
+        id="heroDownload"
+        class="btn primary"
+        href="#"
+        target="_blank"
+        rel="noopener">
+
         ↓ ANDROID'DE İNDİR
+
       </a>
 
-      <a class="btn secondary" href="#features">
+
+      <a
+        class="btn secondary"
+        href="#features">
+
         OYUNU KEŞFET
+
       </a>
 
     </div>
+
 
     <div class="meta">
       Android 8+ • Landscape • Tek oyunculu • v1.2.0
     </div>
 
+
     <div class="download-counter">
+
       <span class="dot"></span>
-      <strong id="heroDownloads">0</strong>
-      <span>indirme</span>
+
+      <strong id="heroDownloads">
+        —
+      </strong>
+
+      <span>
+        gerçek indirme
+      </span>
+
     </div>
 
   </div>
@@ -502,11 +539,14 @@ footer b{
 </section>
 
 
+<!-- FEATURES -->
+
 <section id="features">
 
   <h2 class="section-title">
     Her saniye önemli.
   </h2>
+
 
   <p class="section-sub">
     SON 60 SANİYE, kısa ama yoğun bir survival horror deneyimi.
@@ -516,34 +556,54 @@ footer b{
 
   <div class="grid">
 
+
     <article class="card">
+
       <div class="icon">⏱</div>
-      <h3>60 Saniye</h3>
+
+      <h3>
+        60 Saniye
+      </h3>
+
       <p>
         Tek hedefin var:
         sayaç sıfırlanana kadar hayatta kalmak.
       </p>
+
     </article>
 
 
     <article class="card">
+
       <div class="icon">👁</div>
-      <h3>Rastgele Korku</h3>
+
+      <h3>
+        Rastgele Korku
+      </h3>
+
       <p>
-        Işıklar, sesler, kapılar ve beklenmedik olaylar
-        her oyunu farklılaştırır.
+        Işıklar, sesler, kapılar ve beklenmedik
+        olaylar her oyunu farklılaştırır.
       </p>
+
     </article>
 
 
     <article class="card">
+
       <div class="icon">☠</div>
-      <h3>Yaratık</h3>
+
+      <h3>
+        Yaratık
+      </h3>
+
       <p>
         Karanlıkta seni arayan bir düşman.
         Onu fark ettiğinde çok geç olabilir.
       </p>
+
     </article>
+
 
   </div>
 
@@ -554,20 +614,45 @@ footer b{
       SON 60 SANİYE v1.2
     </div>
 
+
     <ul>
-      <li>Daha güçlü korku atmosferi</li>
-      <li>Geliştirilmiş düşman sistemi</li>
-      <li>Yeni rastgele korku olayları</li>
-      <li>Geliştirilmiş ses ve titreşim</li>
-      <li>Yeni görevler ve etkileşimler</li>
-      <li>Yeni sonlar ve gizli içerikler</li>
-      <li>Performans ve mobil kontrol iyileştirmeleri</li>
+
+      <li>
+        Daha güçlü korku atmosferi
+      </li>
+
+      <li>
+        Geliştirilmiş düşman sistemi
+      </li>
+
+      <li>
+        Yeni rastgele korku olayları
+      </li>
+
+      <li>
+        Geliştirilmiş ses ve titreşim
+      </li>
+
+      <li>
+        Yeni görevler ve etkileşimler
+      </li>
+
+      <li>
+        Yeni sonlar ve gizli içerikler
+      </li>
+
+      <li>
+        Performans ve mobil kontrol iyileştirmeleri
+      </li>
+
     </ul>
 
   </div>
 
 </section>
 
+
+<!-- DOWNLOAD -->
 
 <section id="download">
 
@@ -577,6 +662,7 @@ footer b{
       Cesaretin var mı?
     </h2>
 
+
     <p>
       SON 60 SANİYE v1.2'yi Android cihazına indir
       ve ilk oyunda hayatta kalmayı dene.
@@ -584,10 +670,14 @@ footer b{
 
 
     <a
-      class="btn primary download-main-btn download-btn"
-      href="SON-60-SANIYE.apk"
-      download>
+      id="mainDownload"
+      class="btn primary download-main-btn"
+      href="#"
+      target="_blank"
+      rel="noopener">
+
       ↓ APK'YI ÜCRETSİZ İNDİR
+
     </a>
 
 
@@ -597,10 +687,22 @@ footer b{
         Toplam İndirme
       </div>
 
+
       <div
-        class="big-counter-number"
-        id="bigDownloads">
-        0
+        id="bigDownloads"
+        class="big-counter-number">
+
+        —
+
+      </div>
+
+
+      <div
+        id="counterStatus"
+        class="counter-status">
+
+        GitHub verisi yükleniyor...
+
       </div>
 
     </div>
@@ -609,29 +711,63 @@ footer b{
     <div class="specs">
 
       <div class="spec">
-        <b>v1.2.0</b>
-        <span>Sürüm</span>
+
+        <b>
+          v1.2.0
+        </b>
+
+        <span>
+          Sürüm
+        </span>
+
       </div>
 
-      <div class="spec">
-        <b>Android 8+</b>
-        <span>Minimum</span>
-      </div>
 
       <div class="spec">
-        <b>Landscape</b>
-        <span>Ekran</span>
+
+        <b>
+          Android 8+
+        </b>
+
+        <span>
+          Minimum
+        </span>
+
       </div>
 
+
       <div class="spec">
-        <b>FREE</b>
-        <span>Fiyat</span>
+
+        <b>
+          Landscape
+        </b>
+
+        <span>
+          Ekran
+        </span>
+
+      </div>
+
+
+      <div class="spec">
+
+        <b>
+          FREE
+        </b>
+
+        <span>
+          Fiyat
+        </span>
+
       </div>
 
     </div>
 
+
     <div class="notice">
-      APK dosyası doğrudan bu sayfadan ücretsiz indirilebilir.
+
+      APK, GitHub Releases üzerinden güvenli şekilde indirilebilir.
+
     </div>
 
   </div>
@@ -643,7 +779,13 @@ footer b{
 
 <footer>
 
-  <b>SON 60 SANİYE</b> — HNFAK Games<br>
+  <b>
+    SON 60 SANİYE
+  </b>
+
+  — HNFAK Games
+
+  <br>
 
   <span>
     © 2026 HNFAK. All rights reserved.
@@ -652,85 +794,189 @@ footer b{
 </footer>
 
 
-<div class="toast" id="toast">
-  APK indiriliyor...
-</div>
-
-
 <script>
 
 /*
 ====================================================
-SON 60 SANİYE
-DOWNLOAD COUNTER
+SON 60 SANİYE v1.2
+GITHUB RELEASE DOWNLOAD COUNTER
 ====================================================
 
-Bu sürüm localStorage kullanır.
+Repository:
+ghost432134ww-cmyk/SON-60-SANIYE
 
-Her cihaz/tarayıcı kendi sayacını tutar.
+Release:
+v1.2.0
 
-GERÇEK GLOBAL İNDİRME SAYISI için backend gerekir.
+Asset:
+SON.60.SANIYE.apk
 */
 
-const STORAGE_KEY = "hnfak_son60_downloads";
 
-let downloads =
-  parseInt(localStorage.getItem(STORAGE_KEY)) || 0;
+const GITHUB_OWNER =
+  "ghost432134ww-cmyk";
+
+const GITHUB_REPO =
+  "SON-60-SANIYE";
+
+const RELEASE_TAG =
+  "v1.2.0";
+
+const APK_NAME =
+  "SON.60.SANIYE.apk";
 
 
 /*
-Sayaçları ekrana yaz
+GitHub Release API
 */
-function updateDownloadCounters(){
 
-  const formatted =
-    downloads.toLocaleString("tr-TR");
+const API_URL =
+  `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/releases/tags/${RELEASE_TAG}`;
 
-  document.getElementById("heroDownloads").textContent =
-    formatted;
 
-  document.getElementById("bigDownloads").textContent =
-    formatted;
+/*
+GitHub Release APK indirme adresi
+*/
+
+const DOWNLOAD_URL =
+  `https://github.com/${GITHUB_OWNER}/${GITHUB_REPO}/releases/download/${RELEASE_TAG}/${APK_NAME}`;
+
+
+/*
+APK butonlarını bağla
+*/
+
+document.getElementById("heroDownload").href =
+  DOWNLOAD_URL;
+
+document.getElementById("mainDownload").href =
+  DOWNLOAD_URL;
+
+
+/*
+GitHub'dan gerçek download count çek
+*/
+
+async function loadDownloadCount(){
+
+  const hero =
+    document.getElementById("heroDownloads");
+
+  const big =
+    document.getElementById("bigDownloads");
+
+  const status =
+    document.getElementById("counterStatus");
+
+
+  try{
+
+    const response =
+      await fetch(API_URL, {
+        headers:{
+          "Accept":
+            "application/vnd.github+json"
+        }
+      });
+
+
+    if(!response.ok){
+
+      throw new Error(
+        "GitHub API: " +
+        response.status
+      );
+
+    }
+
+
+    const release =
+      await response.json();
+
+
+    /*
+    Release içindeki APK'yı bul
+    */
+
+    const asset =
+      release.assets.find(
+        item =>
+          item.name === APK_NAME
+      );
+
+
+    if(!asset){
+
+      throw new Error(
+        "APK Release asset bulunamadı."
+      );
+
+    }
+
+
+    /*
+    Gerçek GitHub indirme sayısı
+    */
+
+    const downloads =
+      asset.download_count;
+
+
+    const formatted =
+      downloads.toLocaleString("tr-TR");
+
+
+    hero.textContent =
+      formatted;
+
+    big.textContent =
+      formatted;
+
+
+    status.textContent =
+      "GitHub Releases • gerçek indirme sayısı";
+
+
+  }catch(error){
+
+    console.error(
+      "Download counter error:",
+      error
+    );
+
+
+    hero.textContent =
+      "—";
+
+    big.textContent =
+      "—";
+
+
+    status.innerHTML =
+      '<span class="error">İndirme sayısı şu anda alınamadı.</span>';
+
+  }
+
 }
 
 
 /*
-APK indirme butonları
+Sayacı yükle
 */
-document.querySelectorAll(".download-btn").forEach(button => {
 
-  button.addEventListener("click", function(){
-
-    downloads++;
-
-    localStorage.setItem(
-      STORAGE_KEY,
-      downloads
-    );
-
-    updateDownloadCounters();
-
-    const toast =
-      document.getElementById("toast");
-
-    toast.textContent =
-      "APK indiriliyor...";
-
-    toast.classList.add("show");
-
-    setTimeout(() => {
-      toast.classList.remove("show");
-    }, 1800);
-
-  });
-
-});
+loadDownloadCount();
 
 
 /*
-İlk açılış
+Her 60 saniyede bir yenile.
+Kullanıcı siteyi açık tutarsa
+sayı otomatik güncellenir.
 */
-updateDownloadCounters();
+
+setInterval(
+  loadDownloadCount,
+  60000
+);
 
 </script>
 
