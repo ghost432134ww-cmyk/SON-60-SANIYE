@@ -1,101 +1,739 @@
+```html
 <!DOCTYPE html>
 <html lang="tr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#070707">
-<meta name="description" content="SON 60 SANİYE — Android survival horror oyunu. 60 saniye hayatta kalabilecek misin?">
-<title>SON 60 SANİYE — HNFAK Games</title>
+<meta name="description" content="SON 60 SANİYE v1.2 — HNFAK Games. 60 saniye hayatta kalabilecek misin?">
+<title>SON 60 SANİYE v1.2 — HNFAK Games</title>
+
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-:root{--bg:#060606;--panel:#101010;--text:#f5f5f5;--muted:#999;--accent:#ff3b20;--accent2:#ff7a18;--line:#242424}
-html{scroll-behavior:smooth}
-body{font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden}
-body:before{content:"";position:fixed;inset:0;pointer-events:none;background:radial-gradient(circle at 50% 10%,rgba(255,55,20,.14),transparent 32%),linear-gradient(120deg,transparent 40%,rgba(255,255,255,.018) 50%,transparent 60%);z-index:-1}
-a{color:inherit;text-decoration:none}
-nav{height:72px;display:flex;align-items:center;justify-content:space-between;max-width:1180px;margin:auto;padding:0 24px;border-bottom:1px solid var(--line)}
-.logo{font-weight:900;letter-spacing:1px}.logo span{color:var(--accent)}
-.navlinks{display:flex;gap:25px;color:#aaa;font-size:14px}.navlinks a:hover{color:white}
-.hero{min-height:calc(100vh - 72px);display:grid;place-items:center;text-align:center;padding:70px 20px;position:relative}
-.badge{display:inline-flex;padding:8px 13px;border:1px solid #3a3a3a;border-radius:999px;background:#111;color:#bbb;font-size:12px;margin-bottom:25px}
-h1{font-size:clamp(52px,10vw,112px);line-height:.88;letter-spacing:-5px;font-weight:950;text-transform:uppercase}
-h1 span{color:var(--accent);text-shadow:0 0 40px rgba(255,59,32,.25)}
-.tagline{font-size:clamp(18px,3vw,27px);color:#bdbdbd;margin:25px auto 34px;max-width:650px}
-.cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:54px;padding:0 25px;border-radius:12px;font-weight:800;transition:.2s;border:1px solid var(--line)}
-.btn.primary{background:var(--accent);border-color:var(--accent);color:white;box-shadow:0 10px 40px rgba(255,59,32,.2)}
-.btn.primary:hover{transform:translateY(-3px);background:#ff4e35}
-.btn.secondary{background:#111;color:#ddd}.btn.secondary:hover{background:#181818}
-.meta{margin-top:18px;color:#777;font-size:12px}
-section{max-width:1180px;margin:auto;padding:90px 24px}
-.section-title{font-size:clamp(30px,5vw,52px);letter-spacing:-2px;margin-bottom:14px}
-.section-sub{color:#888;max-width:650px;line-height:1.7;margin-bottom:35px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.card{background:linear-gradient(145deg,#121212,#0b0b0b);border:1px solid var(--line);border-radius:18px;padding:25px;min-height:180px}
-.card .icon{font-size:28px;margin-bottom:18px}.card h3{margin-bottom:9px}.card p{color:#888;line-height:1.6;font-size:14px}
-.download{background:linear-gradient(145deg,#15100e,#0b0b0b);border:1px solid #392019;border-radius:25px;padding:45px;text-align:center;box-shadow:inset 0 0 80px rgba(255,59,32,.035)}
-.download h2{font-size:clamp(32px,5vw,55px);margin-bottom:12px}
-.download p{color:#999;margin-bottom:25px}
-.specs{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:28px}
-.spec{border:1px solid var(--line);border-radius:13px;padding:18px;background:#0c0c0c}.spec b{display:block;margin-bottom:5px}.spec span{font-size:12px;color:#777}
-.notice{font-size:12px;color:#777;margin-top:18px}
-footer{border-top:1px solid var(--line);padding:35px 24px;color:#666;text-align:center;font-size:13px}
-footer b{color:#aaa}
-@media(max-width:800px){.navlinks{display:none}.grid{grid-template-columns:1fr}.specs{grid-template-columns:1fr 1fr}h1{letter-spacing:-3px}.download{padding:30px 20px}}
-@media(max-width:430px){.specs{grid-template-columns:1fr}.hero{padding-top:45px}.btn{width:100%}}
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0
+}
+
+:root{
+  --bg:#050505;
+  --panel:#101010;
+  --panel2:#151515;
+  --text:#f5f5f5;
+  --muted:#999;
+  --accent:#ff3b20;
+  --accent2:#ff7a18;
+  --green:#35d07f;
+  --line:#252525;
+}
+
+html{
+  scroll-behavior:smooth
+}
+
+body{
+  font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+}
+
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 50% 10%,rgba(255,55,20,.16),transparent 32%),
+    radial-gradient(circle at 10% 80%,rgba(255,40,10,.06),transparent 25%),
+    linear-gradient(120deg,transparent 40%,rgba(255,255,255,.018) 50%,transparent 60%);
+  z-index:-1;
+}
+
+a{
+  color:inherit;
+  text-decoration:none;
+}
+
+nav{
+  height:72px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  max-width:1180px;
+  margin:auto;
+  padding:0 24px;
+  border-bottom:1px solid var(--line);
+}
+
+.logo{
+  font-weight:900;
+  letter-spacing:1px;
+}
+
+.logo span{
+  color:var(--accent);
+}
+
+.navlinks{
+  display:flex;
+  gap:25px;
+  color:#aaa;
+  font-size:14px;
+}
+
+.navlinks a:hover{
+  color:white;
+}
+
+.hero{
+  min-height:calc(100vh - 72px);
+  display:grid;
+  place-items:center;
+  text-align:center;
+  padding:70px 20px;
+  position:relative;
+}
+
+.badge{
+  display:inline-flex;
+  padding:8px 13px;
+  border:1px solid #3a3a3a;
+  border-radius:999px;
+  background:#111;
+  color:#bbb;
+  font-size:12px;
+  margin-bottom:25px;
+}
+
+.badge .live{
+  color:var(--green);
+  margin-right:6px;
+}
+
+h1{
+  font-size:clamp(52px,10vw,112px);
+  line-height:.88;
+  letter-spacing:-5px;
+  font-weight:950;
+  text-transform:uppercase;
+}
+
+h1 span{
+  color:var(--accent);
+  text-shadow:0 0 40px rgba(255,59,32,.25);
+}
+
+.tagline{
+  font-size:clamp(18px,3vw,27px);
+  color:#bdbdbd;
+  margin:25px auto 34px;
+  max-width:700px;
+}
+
+.cta{
+  display:flex;
+  gap:12px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:54px;
+  padding:0 25px;
+  border-radius:12px;
+  font-weight:800;
+  transition:.2s;
+  border:1px solid var(--line);
+  cursor:pointer;
+}
+
+.btn.primary{
+  background:var(--accent);
+  border-color:var(--accent);
+  color:white;
+  box-shadow:0 10px 40px rgba(255,59,32,.2);
+}
+
+.btn.primary:hover{
+  transform:translateY(-3px);
+  background:#ff4e35;
+}
+
+.btn.secondary{
+  background:#111;
+  color:#ddd;
+}
+
+.btn.secondary:hover{
+  background:#181818;
+}
+
+.meta{
+  margin-top:18px;
+  color:#777;
+  font-size:12px;
+}
+
+.download-counter{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  margin-top:22px;
+  padding:10px 16px;
+  border:1px solid #292929;
+  background:#0d0d0d;
+  border-radius:999px;
+  color:#aaa;
+  font-size:13px;
+}
+
+.download-counter strong{
+  color:white;
+  font-size:15px;
+}
+
+.download-counter .dot{
+  width:7px;
+  height:7px;
+  border-radius:50%;
+  background:var(--green);
+  box-shadow:0 0 10px var(--green);
+}
+
+section{
+  max-width:1180px;
+  margin:auto;
+  padding:90px 24px;
+}
+
+.section-title{
+  font-size:clamp(30px,5vw,52px);
+  letter-spacing:-2px;
+  margin-bottom:14px;
+}
+
+.section-sub{
+  color:#888;
+  max-width:650px;
+  line-height:1.7;
+  margin-bottom:35px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:16px;
+}
+
+.card{
+  background:linear-gradient(145deg,#121212,#0b0b0b);
+  border:1px solid var(--line);
+  border-radius:18px;
+  padding:25px;
+  min-height:180px;
+  transition:.25s;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+  border-color:#3a3a3a;
+}
+
+.card .icon{
+  font-size:28px;
+  margin-bottom:18px;
+}
+
+.card h3{
+  margin-bottom:9px;
+}
+
+.card p{
+  color:#888;
+  line-height:1.6;
+  font-size:14px;
+}
+
+.update{
+  margin-top:25px;
+  border:1px solid #392019;
+  background:linear-gradient(145deg,#17100e,#0c0c0c);
+  border-radius:20px;
+  padding:28px;
+}
+
+.update-title{
+  color:var(--accent);
+  font-weight:900;
+  margin-bottom:10px;
+}
+
+.update ul{
+  list-style:none;
+  color:#999;
+  line-height:2;
+}
+
+.update li:before{
+  content:"✓";
+  color:var(--green);
+  margin-right:10px;
+}
+
+.download{
+  background:
+    radial-gradient(circle at 50% 0%,rgba(255,59,32,.10),transparent 45%),
+    linear-gradient(145deg,#15100e,#0b0b0b);
+  border:1px solid #392019;
+  border-radius:25px;
+  padding:45px;
+  text-align:center;
+  box-shadow:inset 0 0 80px rgba(255,59,32,.035);
+}
+
+.download h2{
+  font-size:clamp(32px,5vw,55px);
+  margin-bottom:12px;
+}
+
+.download p{
+  color:#999;
+  margin-bottom:25px;
+}
+
+.download-main-btn{
+  min-width:260px;
+}
+
+.specs{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+  margin-top:28px;
+}
+
+.spec{
+  border:1px solid var(--line);
+  border-radius:13px;
+  padding:18px;
+  background:#0c0c0c;
+}
+
+.spec b{
+  display:block;
+  margin-bottom:5px;
+}
+
+.spec span{
+  font-size:12px;
+  color:#777;
+}
+
+.big-counter{
+  margin:30px auto 0;
+  max-width:500px;
+  padding:22px;
+  border:1px solid #292929;
+  background:#090909;
+  border-radius:18px;
+}
+
+.big-counter-label{
+  color:#777;
+  text-transform:uppercase;
+  letter-spacing:2px;
+  font-size:11px;
+  margin-bottom:6px;
+}
+
+.big-counter-number{
+  font-size:42px;
+  font-weight:950;
+  color:white;
+}
+
+.notice{
+  font-size:12px;
+  color:#777;
+  margin-top:18px;
+}
+
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:25px;
+  transform:translate(-50%,20px);
+  background:#151515;
+  border:1px solid #333;
+  color:white;
+  padding:14px 20px;
+  border-radius:12px;
+  opacity:0;
+  pointer-events:none;
+  transition:.3s;
+  z-index:999;
+  box-shadow:0 15px 40px rgba(0,0,0,.4);
+}
+
+.toast.show{
+  opacity:1;
+  transform:translate(-50%,0);
+}
+
+footer{
+  border-top:1px solid var(--line);
+  padding:35px 24px;
+  color:#666;
+  text-align:center;
+  font-size:13px;
+}
+
+footer b{
+  color:#aaa;
+}
+
+@media(max-width:800px){
+  .navlinks{
+    display:none
+  }
+
+  .grid{
+    grid-template-columns:1fr
+  }
+
+  .specs{
+    grid-template-columns:1fr 1fr
+  }
+
+  h1{
+    letter-spacing:-3px
+  }
+
+  .download{
+    padding:30px 20px
+  }
+}
+
+@media(max-width:430px){
+  .specs{
+    grid-template-columns:1fr
+  }
+
+  .hero{
+    padding-top:45px
+  }
+
+  .btn{
+    width:100%
+  }
+
+  .big-counter-number{
+    font-size:34px
+  }
+}
 </style>
 </head>
+
 <body>
+
 <nav>
   <a class="logo" href="#">HNFAK<span> GAMES</span></a>
+
   <div class="navlinks">
-    <a href="#game">Oyun</a><a href="#features">Özellikler</a><a href="#download">İndir</a>
+    <a href="#game">Oyun</a>
+    <a href="#features">Özellikler</a>
+    <a href="#download">İndir</a>
   </div>
 </nav>
 
 <main>
+
 <section class="hero" id="game">
+
   <div>
-    <div class="badge">● ANDROID • v1.0.0 • FREE</div>
-    <h1>SON <span>60</span><br>SANİYE</h1>
-    <p class="tagline">60 saniyen var. Karanlıkta ne olduğunu bilmiyorsun. <b>Hayatta kal.</b></p>
-    <div class="cta">
-      <a class="btn primary" href="SON-60-SANIYE.apk" download>↓ ANDROID'DE İNDİR</a>
-      <a class="btn secondary" href="#features">OYUNU KEŞFET</a>
+
+    <div class="badge">
+      <span class="live">●</span>
+      ANDROID • v1.2.0 • FREE
     </div>
-    <div class="meta">Android 8+ • Landscape • Tek oyunculu</div>
+
+    <h1>
+      SON <span>60</span><br>
+      SANİYE
+    </h1>
+
+    <p class="tagline">
+      60 saniyen var.
+      Karanlıkta ne olduğunu bilmiyorsun.
+      <b>Hayatta kal.</b>
+    </p>
+
+    <div class="cta">
+
+      <a
+        class="btn primary download-btn"
+        href="SON-60-SANIYE.apk"
+        download>
+        ↓ ANDROID'DE İNDİR
+      </a>
+
+      <a class="btn secondary" href="#features">
+        OYUNU KEŞFET
+      </a>
+
+    </div>
+
+    <div class="meta">
+      Android 8+ • Landscape • Tek oyunculu • v1.2.0
+    </div>
+
+    <div class="download-counter">
+      <span class="dot"></span>
+      <strong id="heroDownloads">0</strong>
+      <span>indirme</span>
+    </div>
+
   </div>
+
 </section>
+
 
 <section id="features">
-  <h2 class="section-title">Her saniye önemli.</h2>
-  <p class="section-sub">SON 60 SANİYE, kısa ama yoğun bir survival horror deneyimi. Her oyunda farklı olaylarla karşılaş ve süre dolmadan hayatta kal.</p>
+
+  <h2 class="section-title">
+    Her saniye önemli.
+  </h2>
+
+  <p class="section-sub">
+    SON 60 SANİYE, kısa ama yoğun bir survival horror deneyimi.
+    Her oyunda farklı olaylarla karşılaş ve süre dolmadan hayatta kal.
+  </p>
+
+
   <div class="grid">
-    <article class="card"><div class="icon">⏱</div><h3>60 Saniye</h3><p>Tek hedefin var: sayaç sıfırlanana kadar hayatta kalmak.</p></article>
-    <article class="card"><div class="icon">👁</div><h3>Rastgele Korku</h3><p>Işıklar, sesler, kapılar ve beklenmedik olaylar her oyunu farklılaştırır.</p></article>
-    <article class="card"><div class="icon">☠</div><h3>Yaratık</h3><p>Karanlıkta seni arayan bir düşman. Onu fark ettiğinde çok geç olabilir.</p></article>
+
+    <article class="card">
+      <div class="icon">⏱</div>
+      <h3>60 Saniye</h3>
+      <p>
+        Tek hedefin var:
+        sayaç sıfırlanana kadar hayatta kalmak.
+      </p>
+    </article>
+
+
+    <article class="card">
+      <div class="icon">👁</div>
+      <h3>Rastgele Korku</h3>
+      <p>
+        Işıklar, sesler, kapılar ve beklenmedik olaylar
+        her oyunu farklılaştırır.
+      </p>
+    </article>
+
+
+    <article class="card">
+      <div class="icon">☠</div>
+      <h3>Yaratık</h3>
+      <p>
+        Karanlıkta seni arayan bir düşman.
+        Onu fark ettiğinde çok geç olabilir.
+      </p>
+    </article>
+
   </div>
+
+
+  <div class="update">
+
+    <div class="update-title">
+      SON 60 SANİYE v1.2
+    </div>
+
+    <ul>
+      <li>Daha güçlü korku atmosferi</li>
+      <li>Geliştirilmiş düşman sistemi</li>
+      <li>Yeni rastgele korku olayları</li>
+      <li>Geliştirilmiş ses ve titreşim</li>
+      <li>Yeni görevler ve etkileşimler</li>
+      <li>Yeni sonlar ve gizli içerikler</li>
+      <li>Performans ve mobil kontrol iyileştirmeleri</li>
+    </ul>
+
+  </div>
+
 </section>
+
 
 <section id="download">
+
   <div class="download">
-    <h2>Cesaretin var mı?</h2>
-    <p>SON 60 SANİYE'yi Android cihazına indir ve ilk oyunda hayatta kalmayı dene.</p>
-    <a class="btn primary" href="SON-60-SANIYE.apk" download>↓ APK'YI ÜCRETSİZ İNDİR</a>
-    <div class="specs">
-      <div class="spec"><b>v1.0.0</b><span>Sürüm</span></div>
-      <div class="spec"><b>Android 8+</b><span>Minimum</span></div>
-      <div class="spec"><b>Landscape</b><span>Ekran</span></div>
-      <div class="spec"><b>FREE</b><span>Fiyat</span></div>
+
+    <h2>
+      Cesaretin var mı?
+    </h2>
+
+    <p>
+      SON 60 SANİYE v1.2'yi Android cihazına indir
+      ve ilk oyunda hayatta kalmayı dene.
+    </p>
+
+
+    <a
+      class="btn primary download-main-btn download-btn"
+      href="SON-60-SANIYE.apk"
+      download>
+      ↓ APK'YI ÜCRETSİZ İNDİR
+    </a>
+
+
+    <div class="big-counter">
+
+      <div class="big-counter-label">
+        Toplam İndirme
+      </div>
+
+      <div
+        class="big-counter-number"
+        id="bigDownloads">
+        0
+      </div>
+
     </div>
-    <div class="notice">APK dosyası doğrudan bu sayfadan ücretsiz indirilebilir.</div>
+
+
+    <div class="specs">
+
+      <div class="spec">
+        <b>v1.2.0</b>
+        <span>Sürüm</span>
+      </div>
+
+      <div class="spec">
+        <b>Android 8+</b>
+        <span>Minimum</span>
+      </div>
+
+      <div class="spec">
+        <b>Landscape</b>
+        <span>Ekran</span>
+      </div>
+
+      <div class="spec">
+        <b>FREE</b>
+        <span>Fiyat</span>
+      </div>
+
+    </div>
+
+    <div class="notice">
+      APK dosyası doğrudan bu sayfadan ücretsiz indirilebilir.
+    </div>
+
   </div>
+
 </section>
+
 </main>
 
+
 <footer>
+
   <b>SON 60 SANİYE</b> — HNFAK Games<br>
-  <span>© 2026 HNFAK. All rights reserved.</span>
+
+  <span>
+    © 2026 HNFAK. All rights reserved.
+  </span>
+
 </footer>
+
+
+<div class="toast" id="toast">
+  APK indiriliyor...
+</div>
+
+
+<script>
+
+/*
+====================================================
+SON 60 SANİYE
+DOWNLOAD COUNTER
+====================================================
+
+Bu sürüm localStorage kullanır.
+
+Her cihaz/tarayıcı kendi sayacını tutar.
+
+GERÇEK GLOBAL İNDİRME SAYISI için backend gerekir.
+*/
+
+const STORAGE_KEY = "hnfak_son60_downloads";
+
+let downloads =
+  parseInt(localStorage.getItem(STORAGE_KEY)) || 0;
+
+
+/*
+Sayaçları ekrana yaz
+*/
+function updateDownloadCounters(){
+
+  const formatted =
+    downloads.toLocaleString("tr-TR");
+
+  document.getElementById("heroDownloads").textContent =
+    formatted;
+
+  document.getElementById("bigDownloads").textContent =
+    formatted;
+}
+
+
+/*
+APK indirme butonları
+*/
+document.querySelectorAll(".download-btn").forEach(button => {
+
+  button.addEventListener("click", function(){
+
+    downloads++;
+
+    localStorage.setItem(
+      STORAGE_KEY,
+      downloads
+    );
+
+    updateDownloadCounters();
+
+    const toast =
+      document.getElementById("toast");
+
+    toast.textContent =
+      "APK indiriliyor...";
+
+    toast.classList.add("show");
+
+    setTimeout(() => {
+      toast.classList.remove("show");
+    }, 1800);
+
+  });
+
+});
+
+
+/*
+İlk açılış
+*/
+updateDownloadCounters();
+
+</script>
+
 </body>
 </html>
+```
